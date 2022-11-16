@@ -5,13 +5,14 @@
                 <span></span>
             </div>
         </div>
-        <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div>
-        <h2>{{ titolo }}</h2>
+        <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
+        <h2 v-if="store.ListMovie.length > 0">{{ titolo }}</h2>
         <Transition name="slide-fade">
             <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-2">
                 <div v-for="(item, index) in array" class="col" :key="index">
                     <div class="mycard">
-                        <img :src="`https://image.tmdb.org/t/p/w400` + item.poster_path" alt="" class="pb-3 g-3">
+                        <img :src="`https://image.tmdb.org/t/p/w400${item.poster_path}`" alt="" class="pb-3 g-3"
+                            @error="loadImageFailed">
                         <div class="card-body">
                             <h4>{{ item.title ? item.title : item.name }}</h4>
                             <div class="text-center position-relative ">{{ item.original_title ? item.original_title :
@@ -28,6 +29,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { store } from '../store';
 
 export default {
@@ -36,9 +38,23 @@ export default {
     data() {
         return {
             store,
+            apiUrlFlag: 'https://countryflagsapi.com/png/br'
+
         }
     },
     methods: {
+        loadImageFailed(e) {
+            e.target.src = '/public/6324728.jpg'
+        },
+        getFlag() {
+            store.ListMovie.filter((item) => {
+                axios.get(this.apiUrlFlag, {
+                    params: {
+
+                    }
+                })
+            })
+        }
 
     },
     created() {
@@ -49,6 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 @use '../assets/partials/variables' as *;
+
+h2 {
+    color: aliceblue;
+}
 
 .container {
     padding-top: 100px;
@@ -80,8 +100,8 @@ export default {
 
 img {
     width: 100%;
-    height: 400px;
-    object-fit: cover;
+    height: 380px;
+    object-fit: contain;
     object-position: top;
 
 }

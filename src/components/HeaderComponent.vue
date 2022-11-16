@@ -21,11 +21,15 @@ div.d-flex {
     background-image: linear-gradient(#000, rgba(0, 0, 0, 0));
     color: rgb(164, 11, 11);
     position: fixed;
+    z-index: 1000;
     width: 100%;
     top: 0;
+    padding: 0 1rem;
 
     div {
         text-shadow: 0px 0px 10px #000;
     }
+
+    backdrop-filter: blur(5px);
 }
 </style>

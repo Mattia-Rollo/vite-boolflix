@@ -1,10 +1,14 @@
 <template>
-  ciao App vue
+  <HeaderComponent />
+  <ListComponent />
 </template>
 
 <script>
-export default {
+import HeaderComponent from './components/HeaderComponent.vue';
+import ListComponent from './components/ListComponent.vue';
 
+export default {
+  components: { HeaderComponent, ListComponent }
 }
 </script>
 

@@ -20,6 +20,9 @@ div.d-flex {
     min-height: 80px;
     background-image: linear-gradient(#000, rgba(0, 0, 0, 0));
     color: rgb(164, 11, 11);
+    position: fixed;
+    width: 100%;
+    top: 0;
 
     div {
         text-shadow: 0px 0px 10px #000;

@@ -5,18 +5,20 @@
                 <span></span>
             </div>
         </div>
-        <div>{{ store.errormessage }}</div>
+        <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div>
+        <h2>{{ titolo }}</h2>
         <Transition name="slide-fade">
             <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-2">
-                <div v-for="(item, index) in store.ListMovie" class="col" :key="index">
+                <div v-for="(item, index) in array" class="col" :key="index">
                     <div class="mycard">
                         <img :src="`https://image.tmdb.org/t/p/w400` + item.poster_path" alt="" class="pb-3 g-3">
                         <div class="card-body">
-                            <h4>{{ item.title
-                            }}</h4>
-                            <div class="text-center position-relative ">{{ item.original_title }}</div>
+                            <h4>{{ item.title ? item.title : item.name }}</h4>
+                            <div class="text-center position-relative ">{{ item.original_title ? item.original_title :
+                                    item.original_name
+                            }}</div>
                             <div class="text-center position-relative ">{{ item.original_language }}</div>
-                            <div class="text-center position-relative ">{{ item.vote_average }}</div>
+                            <div class="text-center position-relative ">{{ Math.floor(item.vote_average / 2) }}</div>
                         </div>
                     </div>
                 </div>
@@ -30,6 +32,7 @@ import { store } from '../store';
 
 export default {
     name: 'ListComponent',
+    props: ['array', 'titolo'],
     data() {
         return {
             store,
@@ -77,7 +80,7 @@ export default {
 
 img {
     width: 100%;
-    height: 350px;
+    height: 400px;
     object-fit: cover;
     object-position: top;
 

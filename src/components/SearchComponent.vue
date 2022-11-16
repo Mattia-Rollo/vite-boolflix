@@ -29,7 +29,7 @@ export default {
             //facciamo una copia di this.earch per non cancellarne le proprietà
             const search = { ...this.search }
             //cicliamo sull'array delle chiavi dell'oggetto e se il valore è vuoto cancelliamo la proprietà
-            Object.keys(search).forEach((val) => {
+            Object.keys(this.search).forEach((val) => {
                 if (!search[val]) delete search[val]
             })
             //cloniamo in params l'oggetto con le proprietà valorizzate

@@ -5,16 +5,18 @@
                 <span></span>
             </div>
         </div>
+        <div>{{ store.errormessage }}</div>
         <Transition name="slide-fade">
             <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-2">
                 <div v-for="(item, index) in store.ListMovie" class="col" :key="index">
                     <div class="mycard">
                         <img :src="`https://image.tmdb.org/t/p/w400` + item.poster_path" alt="" class="pb-3 g-3">
                         <div class="card-body">
-                            <h4>{{ item.original_title
+                            <h4>{{ item.title
                             }}</h4>
-                            <!-- <div class="text-center position-relative ">{{ item.nickname }}</div>
-                                <div class="text-center position-relative ">{{ item.status }}</div> -->
+                            <div class="text-center position-relative ">{{ item.original_title }}</div>
+                            <div class="text-center position-relative ">{{ item.original_language }}</div>
+                            <div class="text-center position-relative ">{{ item.vote_average }}</div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +77,7 @@ export default {
 
 img {
     width: 100%;
-    height: 15rem;
+    height: 350px;
     object-fit: cover;
     object-position: top;
 

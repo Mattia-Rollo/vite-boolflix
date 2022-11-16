@@ -2,18 +2,23 @@ import { reactive } from "vue";
 import axios from "axios";
 export const store = reactive({
   count: 0,
-  loading: false,
-  apiURL: "https://api.themoviedb.org/3/search/movie?api_key=e99307154c6dfb0b4750f6603256716d&query=a&language=it-IT",
+  loading: true,
+  apiURL: "https://api.themoviedb.org/3/search/movie?api_key=8ace785dd1f96b68334521629f5dadaf",
   endPoint: "",
+  errormessage: '',
   ListMovie: [],
+  
   params: {},
   getMovie() {
-    // const params = { ...this.params };
+    const params = { ...this.params };
     axios
-      .get(this.apiURL,this.params)
+      .get(this.apiURL,{params} )
       .then((res) => {
         this.ListMovie = res.data.results;
-        this.loading = false;
+        setTimeout(() => {
+          
+          this.loading = false;
+        }, 3000);
       })
       .catch((error) => {
         this.ListMovie.length = 0;

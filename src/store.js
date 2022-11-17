@@ -52,6 +52,18 @@ export const store = reactive({
         this.errormessage = error.message;
       });
   },
+  flagApiUrl: "https://countryflagsapi.com/png/",
+  getCountryFlag(country) {
+    country == "uk" ? (country = "gb") : "";
+    country == "en" ? (country = "us") : "";
+    country == "ja" ? (country = "jp") : "";
+    country == "cs" ? (country = "cz") : "";
+    country == "ko" ? (country = "kr") : "";
+    country == "hi" ? (country = "ht") : "";
+
+    const flagApi = this.flagApiUrl + country;
+    return flagApi;
+  },
 
   // getCharacters() {
   //   this.errormessage = "";

@@ -11,18 +11,7 @@
         <Transition name="slide-fade">
             <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-1 py-1">
                 <div v-for="(item, index) in array" class="col" :key="index">
-                    <div class="mycard shadow-lg">
-                        <img :src="`https://image.tmdb.org/t/p/w400${item.poster_path}`" alt="" class="pb-3 g-3"
-                            @error="loadImageFailed">
-                        <div class="card-body">
-                            <h4>{{ item.title ? item.title : item.name }}</h4>
-                            <div class="text-center position-relative ">{{ item.original_title ? item.original_title :
-                                    item.original_name
-                            }}</div>
-                            <div class="text-center position-relative ">{{ item.original_language }}</div>
-                            <div class="text-center position-relative ">{{ Math.floor(item.vote_average / 2) }}</div>
-                        </div>
-                    </div>
+                    <CardComponent :item="item" />
                 </div>
             </div>
         </Transition>
@@ -32,35 +21,25 @@
 <script>
 import axios from 'axios';
 import { store } from '../store';
+import CardComponent from './CardComponent.vue';
 
 export default {
-    name: 'ListComponent',
-    props: ['array', 'titolo'],
+    name: "ListComponent",
+    props: ["array", "titolo"],
     data() {
         return {
             store,
-            apiUrlFlag: 'https://countryflagsapi.com/png/br'
-
-        }
+            apiUrlFlag: "https://countryflagsapi.com/png/br"
+        };
     },
     methods: {
-        loadImageFailed(e) {
-            e.target.src = '/6324728.jpg'
-        },
-        getFlag() {
-            store.ListMovie.filter((item) => {
-                axios.get(this.apiUrlFlag, {
-                    params: {
 
-                    }
-                })
-            })
-        }
 
     },
     created() {
         store.getMovie();
-    }
+    },
+    components: { CardComponent }
 }
 </script>
 
@@ -83,29 +62,6 @@ h2 {
 
 }
 
-.mycard {
-    // padding: 1rem;
-    background-color: #2e3a46;
-    color: whitesmoke;
-    height: 100%;
-    // border-radius: 10px;
-
-    h4 {
-        text-align: center;
-    }
-
-    h4~div {
-        color: #fff000;
-    }
-}
-
-img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: top;
-
-}
 
 
 

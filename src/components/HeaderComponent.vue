@@ -17,6 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 div.d-flex {
+    align-items: center;
     min-height: 80px;
     background-image: linear-gradient(#000, rgba(0, 0, 0, 0));
     color: rgb(164, 11, 11);

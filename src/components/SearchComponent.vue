@@ -1,12 +1,12 @@
 <template>
-    <form class="row gx-3 align-items-center m-0" @submit.prevent="store.getMovie">
+    <form class="d-flex row align-content-center gx-2" @submit.prevent="store.getMovie">
         <div class="col-auto">
             <label class="visually-hidden" for="Search">Name</label>
-            <input type="text" class="" id="Search" placeholder="Search" v-model.trim="store.search.query">
+            <input type="text" class="h-100" id="Search" placeholder="Search" v-model.trim="store.search.query">
         </div>
 
         <div class="col-auto">
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="submit" class="btn btn-danger">Submit</button>
         </div>
     </form>
 </template>

@@ -2,6 +2,7 @@
   <HeaderComponent />
   <ListComponent :array="store.ListMovie" :titolo="titoloMovie" />
   <ListComponent :array="store.ListSeries" :titolo="titoloSeries" />
+  <ListComponent :array="store.popularTV" :titolo="populartv" />
 
 </template>
 
@@ -17,6 +18,8 @@ export default {
       store,
       titoloSeries: 'SeriesTV',
       titoloMovie: 'Movie',
+      populartv: 'Popular TV'
+
 
     }
   },

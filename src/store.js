@@ -1,6 +1,7 @@
 import { reactive } from "vue";
 import axios from "axios";
 export const store = reactive({
+  activeIndex: null,
   count: 0,
   loading: true,
   search: {
@@ -63,6 +64,20 @@ export const store = reactive({
 
     const flagApi = this.flagApiUrl + country;
     return flagApi;
+  },
+  paramsPopular: {},
+  popularTV: [],
+  getPopular() {
+    axios
+      .get(this.apiURL + "tv/popular" + this.key_ath, {
+        params: {
+          language: "it-IT",
+        },
+      })
+      .then((res) => {
+        this.popularTV = res.data.results;
+        this.loading = false;
+      });
   },
 
   // getCharacters() {

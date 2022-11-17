@@ -1,16 +1,17 @@
 <template>
-    <div class="container">
+
+    <div class="container py-3">
         <div class="bg-loading" v-if="store.loading">
             <div class="ring">Loading
                 <span></span>
             </div>
         </div>
         <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
-        <h2 v-if="store.ListMovie.length > 0">{{ titolo }}</h2>
+        <h2 class="py-1" v-if="store.ListMovie.length > 0">{{ titolo }}</h2>
         <Transition name="slide-fade">
-            <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-2">
+            <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-1 py-1">
                 <div v-for="(item, index) in array" class="col" :key="index">
-                    <div class="mycard">
+                    <div class="mycard shadow-lg">
                         <img :src="`https://image.tmdb.org/t/p/w400${item.poster_path}`" alt="" class="pb-3 g-3"
                             @error="loadImageFailed">
                         <div class="card-body">
@@ -44,7 +45,7 @@ export default {
     },
     methods: {
         loadImageFailed(e) {
-            e.target.src = '/public/6324728.jpg'
+            e.target.src = '/6324728.jpg'
         },
         getFlag() {
             store.ListMovie.filter((item) => {
@@ -70,9 +71,9 @@ h2 {
     color: aliceblue;
 }
 
-.container {
-    padding-top: 100px;
-}
+// .container {
+//     padding-top: 100px;
+// }
 
 .container .bg-loading {
     background: #262626;
@@ -100,8 +101,8 @@ h2 {
 
 img {
     width: 100%;
-    height: 380px;
-    object-fit: contain;
+    height: 300px;
+    object-fit: cover;
     object-position: top;
 
 }

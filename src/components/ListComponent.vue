@@ -1,21 +1,21 @@
 <template>
 
-    <div class="container py-3" v-if="array.length">
-        <div class="bg-loading" v-if="store.loading">
-            <div class="ring">Loading
-                <span></span>
+    <Transition name="slide-fade">
+        <div class="container py-3" v-if="array.length">
+            <div class="bg-loading" v-if="store.loading">
+                <div class="ring">Loading
+                    <span></span>
+                </div>
             </div>
-        </div>
-        <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
-        <h2 class="py-1">{{ titolo }}</h2>
-        <Transition name="slide-fade">
-            <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-1 py-1">
+            <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
+            <h2 class="py-1">{{ titolo }}</h2>
+            <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-1">
                 <div v-for="(item, index) in array" class="col" :key="index">
                     <CardComponent :item="item" />
                 </div>
             </div>
-        </Transition>
-    </div>
+        </div>
+    </Transition>
 </template>
 
 <script>

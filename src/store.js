@@ -7,6 +7,7 @@ export const store = reactive({
   search: {
     query: "",
     language: "it-IT",
+    include_adult: false,
   },
   apiURL: "https://api.themoviedb.org/3/",
   searchEndPoint: "search/",
@@ -21,6 +22,7 @@ export const store = reactive({
   getMovie() {
     this.ListMovie = [];
     this.ListSeries = [];
+    this.popularTV = [];
     this.loading = true;
     const params = { ...this.search };
     axios
@@ -60,7 +62,8 @@ export const store = reactive({
     country == "ja" ? (country = "jp") : "";
     country == "cs" ? (country = "cz") : "";
     country == "ko" ? (country = "kr") : "";
-    country == "hi" ? (country = "ht") : "";
+    country == "hi" ? (country = "in") : "";
+    country == "el" ? (country = "gr") : "";
 
     const flagApi = this.flagApiUrl + country;
     return flagApi;

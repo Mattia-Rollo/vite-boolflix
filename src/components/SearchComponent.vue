@@ -25,6 +25,12 @@ export default {
             // }
         }
     },
+    watch: {
+        'store.search.query'(newVal, OldVal) {
+            console.log(newVal, OldVal);
+            store.getMovie();
+        }
+    },
     methods: {
         // searchMovie() {
         //     // store.params = { ...this.search };

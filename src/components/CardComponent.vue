@@ -15,7 +15,7 @@
             <img class="flag" :src="store.getCountryFlag(item.original_language)" alt="">
             <!-- <div class="text-center position-relative ">{{ item.original_language }}</div> -->
 
-            <div class=" position-relative ">voto: {{ item.vote_average }}</div>
+            <div class=" position-relative ">voto: {{ item.vote_average }} / 10</div>
             <div class="">
                 <span v-for="n in 5"><i class="fa-star"
                         :class="n <= vote(item.vote_average) ? 'fa-solid' : 'fa-regular'"></i></span>

@@ -32,9 +32,9 @@ export const store = reactive({
         { params }
       )
       .then((res) => {
-        this.ListMovie = res.data.results;
         setTimeout(() => {
           this.loading = false;
+          this.ListMovie = res.data.results;
         }, 1500);
         console.log(this.params);
       })

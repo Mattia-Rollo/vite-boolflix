@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-auto">
-            <button type="submit" class="btn btn-danger">Submit</button>
+            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
     </form>
 </template>

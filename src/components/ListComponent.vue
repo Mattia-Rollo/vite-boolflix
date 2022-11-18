@@ -9,7 +9,7 @@
         <div class="container py-3" v-if="array.length">
             <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
             <h2 class="py-1" v-if="!store.loading">{{ titolo }}</h2>
-            <div v-if="!store.loading" class="row row-cols-3 row-cols-md-4 row-cols-lg-5 g-3 py-1">
+            <div v-if="!store.loading" class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3 py-1">
                 <div v-for="(item, index) in array" class="col" :key="index">
                     <CardComponent :item="item" />
                 </div>
@@ -77,13 +77,13 @@ h2 {
     border: 3px solid #3c3c3c;
     border-radius: 50%;
     text-align: center;
-    line-height: 150px;
+    line-height: 147px;
     font-family: sans-serif;
     font-size: 20px;
-    color: #fff000;
+    color: #ff0000;
     letter-spacing: 4px;
     text-transform: uppercase;
-    text-shadow: 0 0 10px #fff000;
+    text-shadow: 0 0 10px #000000;
     box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
 
@@ -95,8 +95,8 @@ h2 {
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    border-top: 3px solid #fff000;
-    border-right: 3px solid #fff000;
+    border-top: 3px solid #ff0000;
+    border-right: 3px solid #ff0000;
     border-radius: 50%;
     animation: animateC 2s linear infinite;
 }
@@ -120,10 +120,10 @@ span:before {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: #fff000;
+    background: #ff0000;
     top: -6px;
     right: -8px;
-    box-shadow: 0 0 20px #fff000;
+    box-shadow: 0 0 20px #ff0000;
 }
 
 @keyframes animateC {

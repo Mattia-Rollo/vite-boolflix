@@ -1,5 +1,6 @@
 <template>
-    <form class="d-flex align-content-center " @submit.prevent="store.search.query ? store.getMovie : ''">
+    <form class="d-flex align-content-center "
+        @submit.prevent="store.search.query ? store.getMovie() : store.getPopular()">
         <div class="col-auto">
             <select class="myform-select " v-model="store.categorySelected">
                 <option selected value=''>Open this select menu</option>

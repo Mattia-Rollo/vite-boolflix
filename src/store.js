@@ -84,23 +84,7 @@ export const store = reactive({
       });
   },
 
-  // getCharacters() {
-  //   this.errormessage = "";
-  //   this.loading = true;
-  //   const params = { ...this.params };
-  // axios
-  //   .get(this.apiURL + this.endPoint, { params })
-  //   .then((res) => {
-  //     this.characterList = res.data.results;
-  //     this.loading = false;
-  //   })
-  //   .catch((error) => {
-  //     this.characterList.length = 0;
-  //     this.loading = false;
-  //     this.errormessage = error.message;
-  //   });
-  // },
-  categorySelected: '',
+  categorySelected: null,
   genres: [],
   getGenres() {
     axios
@@ -109,7 +93,7 @@ export const store = reactive({
       )
       .then((res) => {
         this.genres = res.data.genres;
-        console.log(this.genres);
+        // console.log(this.genres);
       })
       .catch((error) => {
        console.log(error);

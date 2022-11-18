@@ -18,27 +18,45 @@ export default {
       store,
       titoloSeries: 'SeriesTV',
       titoloMovie: 'Movie',
-      populartv: 'Popular TV'
+      populartv: 'Popular TV',
+      listOne: [...store.ListMovie]
 
 
     }
   },
   computed: {
     filteredMovie() {
-      // console.log(store.ListMovie);
 
-      return store.categorySelected != '' ? store.ListMovie.filter((item) => {
-        item.genre_ids.includes(store.categorySelected);
-      }) : store.ListMovie;
+      console.log(store.categorySelected)
+      // console.log(store.ListMovie[0].genre_ids)
+      // console.log(store.ListMovie[0])
+
+      return store.categorySelected
+        ? store.ListMovie.filter((item) => {
+          item.genre_ids.includes(store.categorySelected);
+        })
+        : store.ListMovie;
 
     }
   },
   created() {
     store.getPopular();
     store.getGenres();
-    // store.endPoint = 'character';
+
     // store.getCharacters();
     //this.getCharacters()
+  },
+  mounted() {
+    // const a = store.ListMovie.filter((item) => {
+    //   item.genre_ids.includes(store.categorySelected);
+    // })
+    // console.log(store.ListMovie);
+  },
+  updated() {
+
+    // console.log(store.genres);
+    // console.log(this.genresApp);
+    // console.log(this.movieApp);
   }
 }
 </script>

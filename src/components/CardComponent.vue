@@ -183,9 +183,9 @@ img {
 .flag {
     // display: block;
     // margin: 0 auto;
-    width: 50px;
+    width: 40px;
     // object-fit: fill;
-    height: 30px;
+    height: 35px;
     margin: .6rem 0;
 }
 

@@ -74,7 +74,7 @@ export default {
 
     &:hover {
 
-        transform: scale(130%);
+        transform: scale(130%) translateX(-28px);
         width: 280px;
         height: 350px;
         border: 1px solid gray;

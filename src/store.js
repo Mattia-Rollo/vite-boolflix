@@ -24,7 +24,7 @@ export const store = reactive({
     this.ListMovie = [];
     this.ListSeries = [];
     this.popularTV = [];
-    this.loading = true;
+    // this.loading = true;
     const params = { ...this.search };
     axios
       .get(
@@ -72,8 +72,6 @@ export const store = reactive({
   paramsPopular: {},
   popularTV: [],
   getPopular() {
-    this.ListMovie = [];
-    this.ListSeries = [];
     axios
       .get(this.apiURL + "tv/popular" + this.key_ath, {
         params: {
@@ -83,6 +81,8 @@ export const store = reactive({
       .then((res) => {
         this.popularTV = res.data.results;
         this.loading = false;
+        this.ListMovie = [];
+        this.ListSeries = [];
       });
   },
 

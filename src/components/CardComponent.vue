@@ -60,7 +60,7 @@ export default {
     color: whitesmoke;
     height: 350px;
     // border-radius: 10px;
-    transition: all 0.5s;
+    transition: all 0.8s;
     cursor: pointer;
 
 
@@ -73,9 +73,15 @@ export default {
     }
 
     &:hover {
+
         transform: scale(130%);
-        width: 300px;
+        width: 280px;
+        height: 350px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        // margin: 40px 0;
         box-shadow: 0px 0px 15px 5px black;
+
         // width: 300px;
         // height: 600px;
         z-index: 100;
@@ -83,7 +89,7 @@ export default {
 
     &:hover img:not(.flag) {
         height: 175px;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
         // width: 300px;
     }
@@ -99,7 +105,7 @@ export default {
 img {
     width: 100%;
     height: 350px;
-    object-fit: contain;
+    object-fit: cover;
     object-position: top;
     transition: all 0.5s;
 }
@@ -121,12 +127,12 @@ img {
     background-color: rgba($color: #202020, $alpha: 0.8);
     // top: 175px;
     opacity: 0;
-    transition: top 0.5s;
+    // transition: top 0.5s;
 
     &:hover {
-        // opacity: 1;
-        // display: block;
-        // height: 100px;
+        opacity: 1;
+        display: block;
+        height: 100px;
     }
 
 }
@@ -140,7 +146,7 @@ img {
 
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 *::-webkit-scrollbar-track {

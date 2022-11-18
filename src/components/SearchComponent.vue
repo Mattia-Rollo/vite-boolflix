@@ -27,8 +27,10 @@ export default {
     watch: {
         'store.search.query'(newVal, OldVal) {
             console.log(newVal, OldVal);
-            if (newVal === '') {
+            if (newVal == '') {
                 store.getPopular();
+                store.ListMovie = [];
+                store.ListSeries = [];
             } else {
                 store.getMovie();
             }

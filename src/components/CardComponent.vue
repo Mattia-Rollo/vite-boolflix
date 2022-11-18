@@ -3,8 +3,7 @@
     <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false">
 
         <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
-            <source src="/public/Rick and Morty ITA - Un'avventura veloce.mp4" type="video/mp4"
-                poster="`https://image.tmdb.org/t/p/w342${item.poster_path}`">
+            <source src="/public/RickEMorty.mp4" type="video/mp4">
         </video>
 
         <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
@@ -104,7 +103,7 @@ export default {
         // height: 175px;
         // object-fit: contain;
         // object-position: center;
-        opacity: 0;
+        display: none;
         // width: 300px;
     }
 
@@ -137,7 +136,7 @@ img {
     padding: 0.8rem;
     // justify-content: center;
     // margin: 0 auto;
-    height: 350px;
+    height: 175px;
     width: 100%;
     // top: 0;
     // left: 50%;
@@ -145,7 +144,7 @@ img {
     background-color: rgba($color: #202020, $alpha: 0.8);
     // top: 175px;
     opacity: 0;
-    // transition: top 0.5s;
+    transition: opacity 0.5s;
 
     &:hover {
         opacity: 1;

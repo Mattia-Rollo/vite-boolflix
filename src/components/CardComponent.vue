@@ -56,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 .mycard {
     // padding: 1rem;
-    background-color: #585858;
+    background-color: #141414;
     color: whitesmoke;
     height: 350px;
     // border-radius: 10px;
@@ -74,6 +74,7 @@ export default {
 
     &:hover {
         transform: scale(130%);
+        width: 300px;
         box-shadow: 0px 0px 15px 5px black;
         // width: 300px;
         // height: 600px;
@@ -117,7 +118,7 @@ img {
     // top: 0;
     // left: 50%;
     // transform: translate(-50%, -50%);
-    background-color: rgba($color: #4b4b4b, $alpha: 0.8);
+    background-color: rgba($color: #202020, $alpha: 0.8);
     top: 175px;
     opacity: 0;
     transition: top 0.5s;

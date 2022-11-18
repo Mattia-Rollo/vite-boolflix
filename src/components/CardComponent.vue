@@ -1,8 +1,12 @@
 <template>
 
     <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false">
-        <iframe v-if="show" src="https://vlipsy.com/embed/tEGEqQ8j" width="280" height="155" frameborder="0"
-            nomuted></iframe>
+
+        <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
+            <source src="/public/Rick and Morty ITA - Un'avventura veloce.mp4" type="video/mp4"
+                poster="`https://image.tmdb.org/t/p/w342${item.poster_path}`">
+        </video>
+
         <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
         <div class="card-body" ref='index'>
 
@@ -97,9 +101,9 @@ export default {
     }
 
     &:hover img:not(.flag) {
-        height: 175px;
-        object-fit: contain;
-        object-position: center;
+        // height: 175px;
+        // object-fit: contain;
+        // object-position: center;
         opacity: 0;
         // width: 300px;
     }
@@ -111,7 +115,9 @@ export default {
         opacity: 1;
     }
 
-    background-clip: url('https://vlp.to/Aqa4V29o');
+
+
+    // background-clip: url('https://vlp.to/Aqa4V29o');
 }
 
 img {
@@ -147,6 +153,10 @@ img {
         height: 100px;
     }
 
+    * {
+        padding: 0.2rem 0;
+    }
+
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -178,5 +188,19 @@ img {
     // object-fit: fill;
     height: 30px;
     margin: .6rem 0;
+}
+
+.slide-fade-enter-active {
+    transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+    // transform: translateY(-100px);
+    opacity: 0;
 }
 </style>

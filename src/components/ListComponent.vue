@@ -32,11 +32,12 @@ export default {
             apiUrlFlag: "https://countryflagsapi.com/png/br"
         };
     },
+
     methods: {
 
 
     },
-    created() {
+    update() {
 
     },
     components: { CardComponent }

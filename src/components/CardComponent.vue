@@ -3,7 +3,7 @@
     <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false">
 
         <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
-            <source src="/public/RickEMorty.mp4" type="video/mp4">
+            <source src="/RickEMorty.mp4" type="video/mp4">
         </video>
 
         <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
@@ -59,7 +59,7 @@ export default {
         }
     },
     mounted() {
-        console.log(this.$refs.index)
+        // console.log(this.$refs.index)
     },
 }
 </script>
@@ -72,7 +72,7 @@ export default {
     height: 350px;
     overflow: hidden;
     // border-radius: 10px;
-    transition: all 0.8s;
+    transition: all 0.5s;
     cursor: pointer;
 
 
@@ -86,7 +86,7 @@ export default {
 
     &:hover {
 
-        transform: scale(130%) translateX(-28px);
+        transform: scale(130%);
         width: 280px;
         height: 350px;
         border: 1px solid gray;
@@ -189,17 +189,17 @@ img {
     margin: .6rem 0;
 }
 
-.slide-fade-enter-active {
-    transition: all 0.2s ease-out;
-}
+// .slide-fade-enter-active {
+//     transition: all 0.2s ease-out;
+// }
 
-.slide-fade-leave-active {
-    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
-}
+// .slide-fade-leave-active {
+//     transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+// }
 
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-    // transform: translateY(-100px);
-    opacity: 0;
-}
+// .slide-fade-enter-from,
+// .slide-fade-leave-to {
+//     // transform: translateY(-100px);
+//     opacity: 0;
+// }
 </style>

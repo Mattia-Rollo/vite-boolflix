@@ -1,5 +1,12 @@
 <template>
-    <form class="d-flex row align-content-center gx-2" @submit.prevent="store.search.query ? store.getMovie : ''">
+    <form class="d-flex align-content-center " @submit.prevent="store.search.query ? store.getMovie : ''">
+        <div class="col-auto">
+            <select class="myform-select " v-model="store.categorySelected">
+                <option selected value=''>Open this select menu</option>
+                <option v-for="item in store.genres" :value="item.id">{{ item.name }}</option>
+
+            </select>
+        </div>
         <div class="col-auto">
             <input type="text" class="h-100" id="Search" placeholder="Search" v-model.trim="store.search.query">
         </div>
@@ -17,6 +24,7 @@ export default {
     name: 'SearchComponent',
     data() {
         return {
+
             store,
             // search: {
             //     query: 'a',
@@ -26,7 +34,7 @@ export default {
     },
     watch: {
         'store.search.query'(newVal, OldVal) {
-            console.log(newVal, OldVal);
+            // console.log(newVal, OldVal);
             if (newVal == '') {
                 store.getPopular();
                 store.ListMovie = [];
@@ -69,5 +77,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+form {
+    gap: 5px;
+}
 
+.myform-select {
+    height: 100%;
+    padding: 0 0.5rem;
+}
 </style>

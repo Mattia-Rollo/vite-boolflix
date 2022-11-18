@@ -36,7 +36,7 @@ export const store = reactive({
         setTimeout(() => {
           this.loading = false;
         }, 1500);
-        console.log(this.params);
+        // console.log(this.params);
       })
       .catch((error) => {
         this.ListMovie.length = 0;
@@ -100,4 +100,20 @@ export const store = reactive({
   //     this.errormessage = error.message;
   //   });
   // },
+  categorySelected: '',
+  genres: [],
+  getGenres() {
+    axios
+      .get(
+        this.apiURL + 'genre/movie/list' + this.key_ath
+      )
+      .then((res) => {
+        this.genres = res.data.genres;
+        console.log(this.genres);
+      })
+      .catch((error) => {
+       console.log(error);
+      });
+
+  }
 });

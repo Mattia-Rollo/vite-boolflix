@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent />
-  <ListComponent :array="store.ListMovie" :titolo="titoloMovie" />
+  <ListComponent :array="filteredMovie" :titolo="titoloMovie" />
   <ListComponent :array="store.ListSeries" :titolo="titoloSeries" />
   <ListComponent :array="store.popularTV" :titolo="populartv" />
 
@@ -23,8 +23,19 @@ export default {
 
     }
   },
+  computed: {
+    filteredMovie() {
+      // console.log(store.ListMovie);
+
+      return store.categorySelected != '' ? store.ListMovie.filter((item) => {
+        item.genre_ids.includes(store.categorySelected);
+      }) : store.ListMovie;
+
+    }
+  },
   created() {
     store.getPopular();
+    store.getGenres();
     // store.endPoint = 'character';
     // store.getCharacters();
     //this.getCharacters()

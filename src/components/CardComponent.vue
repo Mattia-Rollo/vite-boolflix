@@ -5,7 +5,7 @@
         <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
         <div class="card-body" ref='index'>
 
-            <h4>{{ item.title ? item.title : item.name }}</h4>
+            <h5>{{ item.title ? item.title : item.name }}</h5>
             <div class="position-relative "
                 v-if="(item.original_title !== item.title) || (item.original_name !== item.name)">{{ item.original_title
                         ?
@@ -20,6 +20,8 @@
                 <span v-for="n in 5"><i class="fa-star"
                         :class="n <= vote(item.vote_average) ? 'fa-solid' : 'fa-regular'"></i></span>
             </div>
+            <!-- <button @click="apri">dettagli</button> -->
+            <!-- <div :class="{ 'd-none': !show }">sono dettagli</div> -->
             <div>{{ item.overview }}</div>
         </div>
     </div>
@@ -33,15 +35,19 @@ export default {
     props: ['item', 'classe'],
     data() {
         return {
-            store
+            store,
+            show: false
         }
     },
     methods: {
+        apri() {
+            this.show = !this.show
+        },
         loadImageFailed(e) {
             e.target.src = "/6324728.jpg";
         },
         vote(vote) {
-            return Math.ceil(vote / 2);
+            return Math.floor(vote / 2);
         }
     }
 }
@@ -50,9 +56,9 @@ export default {
 <style lang="scss" scoped>
 .mycard {
     // padding: 1rem;
-    background-color: #2e3a46;
+    background-color: #585858;
     color: whitesmoke;
-    height: 100%;
+    height: 350px;
     // border-radius: 10px;
     transition: all 0.5s;
     cursor: pointer;
@@ -75,13 +81,16 @@ export default {
     }
 
     &:hover img:not(.flag) {
-        // height: 200px;
+        height: 175px;
+        object-fit: contain;
+        // background-position: center center;
         // width: 300px;
     }
 
     &:hover .card-body {
-        // height: 150px;
+        height: 175px;
         // width: 300px;
+
         opacity: 1;
     }
 }
@@ -89,7 +98,7 @@ export default {
 img {
     width: 100%;
     height: 350px;
-    object-fit: cover;
+    object-fit: contain;
     object-position: top;
     transition: all 0.5s;
 }
@@ -97,20 +106,21 @@ img {
 .card-body {
     position: absolute;
     // display: none;
-    bottom: 0;
+    top: 350px;
+    font-size: 0.8rem;
     overflow-y: auto;
     padding: 0.8rem;
     // justify-content: center;
     // margin: 0 auto;
-    height: 100%;
+    height: 350px;
     width: 100%;
     // top: 0;
     // left: 50%;
     // transform: translate(-50%, -50%);
-    background-color: rgba($color: #000000, $alpha: 0.8);
-
+    background-color: rgba($color: #4b4b4b, $alpha: 0.8);
+    top: 175px;
     opacity: 0;
-    transition: all 0.3s;
+    transition: top 0.5s;
 
     &:hover {
         // opacity: 1;
@@ -145,9 +155,9 @@ img {
 .flag {
     // display: block;
     // margin: 0 auto;
-    width: 60px;
+    width: 50px;
     // object-fit: fill;
-    height: 40px;
+    height: 30px;
     margin: .6rem 0;
 }
 </style>

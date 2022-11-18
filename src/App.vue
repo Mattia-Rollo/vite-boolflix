@@ -24,6 +24,7 @@ export default {
     }
   },
   created() {
+    store.getPopular();
     // store.endPoint = 'character';
     // store.getCharacters();
     //this.getCharacters()

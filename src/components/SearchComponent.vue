@@ -1,5 +1,6 @@
 <template>
-    <form class="d-flex row align-content-center gx-2" @submit.prevent="store.getMovie">
+    <form class="d-flex row align-content-center gx-2"
+        @submit.prevent="store.search.query ? store.getMovie : store.getPopular">
         <div class="col-auto">
             <label class="visually-hidden" for="Search">Name</label>
             <input type="text" class="h-100" id="Search" placeholder="Search" v-model.trim="store.search.query">
@@ -28,7 +29,11 @@ export default {
     watch: {
         'store.search.query'(newVal, OldVal) {
             console.log(newVal, OldVal);
-            store.getMovie();
+            if (newVal === '') {
+                store.getPopular();
+            } else {
+                store.getMovie();
+            }
         }
     },
     methods: {
@@ -48,9 +53,7 @@ export default {
         //     store.getMovie()
         //     //this.$emit('filterchar');
         // },
-        getFlag() {
 
-        }
         // resetSearch() {
         //     this.search.status = '';
         //     this.search.name = '';

@@ -40,6 +40,7 @@ export const store = reactive({
         this.errormessage = error.message;
 
         this.loading = false;
+        this.getPopular();
       });
 
     axios

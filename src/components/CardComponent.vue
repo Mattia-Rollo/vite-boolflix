@@ -83,8 +83,8 @@ export default {
 
     &:hover img:not(.flag) {
         height: 175px;
-        object-fit: contain;
-        // background-position: center center;
+        object-fit: cover;
+        object-position: center;
         // width: 300px;
     }
 
@@ -107,7 +107,7 @@ img {
 .card-body {
     position: absolute;
     // display: none;
-    top: 350px;
+    bottom: 0;
     font-size: 0.8rem;
     overflow-y: auto;
     padding: 0.8rem;
@@ -119,7 +119,7 @@ img {
     // left: 50%;
     // transform: translate(-50%, -50%);
     background-color: rgba($color: #202020, $alpha: 0.8);
-    top: 175px;
+    // top: 175px;
     opacity: 0;
     transition: top 0.5s;
 

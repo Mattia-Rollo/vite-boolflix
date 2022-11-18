@@ -59,6 +59,7 @@ export default {
     background-color: #141414;
     color: whitesmoke;
     height: 350px;
+    overflow: hidden;
     // border-radius: 10px;
     transition: all 0.8s;
     cursor: pointer;

@@ -1,9 +1,11 @@
 <template>
 
-    <div class="mycard shadow-lg position-relative" @mouseover="store.activeIndex = index">
-
+    <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false">
+        <iframe v-if="show" src="https://vlipsy.com/embed/tEGEqQ8j" width="280" height="155" frameborder="0"
+            nomuted></iframe>
         <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
         <div class="card-body" ref='index'>
+
 
             <h5>{{ item.title ? item.title : item.name }}</h5>
             <div class="position-relative "
@@ -14,10 +16,11 @@
                 }}</div>
             <img class="flag" :src="store.getCountryFlag(item.original_language)" alt="">
             <!-- <div class="text-center position-relative ">{{ item.original_language }}</div> -->
+            <div v-if="item.release_date">Uscita: {{ item.release_date.split('-').reverse().join('-') }}</div>
 
             <div class=" position-relative ">voto: {{ item.vote_average }} / 10</div>
             <div class="">
-                <span v-for="n in 5"><i class="fa-star"
+                <span v-for="n in 5"><i class="fa-star" :key="n" :data="n"
                         :class="n <= vote(item.vote_average) ? 'fa-solid' : 'fa-regular'"></i></span>
             </div>
             <!-- <button @click="apri">dettagli</button> -->
@@ -47,9 +50,14 @@ export default {
             e.target.src = "/6324728.jpg";
         },
         vote(vote) {
-            return Math.floor(vote / 2);
+
+
+            return Math.ceil(vote) / 2;
         }
-    }
+    },
+    mounted() {
+        console.log(this.$refs.index)
+    },
 }
 </script>
 
@@ -92,6 +100,7 @@ export default {
         height: 175px;
         object-fit: contain;
         object-position: center;
+        opacity: 0;
         // width: 300px;
     }
 
@@ -101,6 +110,8 @@ export default {
 
         opacity: 1;
     }
+
+    background-clip: url('https://vlp.to/Aqa4V29o');
 }
 
 img {

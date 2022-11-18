@@ -8,6 +8,7 @@ export const store = reactive({
     query: "",
     language: "it-IT",
     include_adult: false,
+    page: 1,
   },
   apiURL: "https://api.themoviedb.org/3/",
   searchEndPoint: "search/",
@@ -32,15 +33,14 @@ export const store = reactive({
       )
       .then((res) => {
         this.ListMovie = res.data.results;
-        this.loading = false;
+        setTimeout(() => {
+          this.loading = false;
+        }, 1500);
         console.log(this.params);
       })
       .catch((error) => {
         this.ListMovie.length = 0;
         this.errormessage = error.message;
-
-        this.loading = false;
-        this.getPopular();
       });
 
     axios
@@ -72,6 +72,8 @@ export const store = reactive({
   paramsPopular: {},
   popularTV: [],
   getPopular() {
+    this.ListMovie = [];
+    this.ListSeries = [];
     axios
       .get(this.apiURL + "tv/popular" + this.key_ath, {
         params: {

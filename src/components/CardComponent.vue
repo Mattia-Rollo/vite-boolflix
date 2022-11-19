@@ -1,12 +1,13 @@
 <template>
 
-    <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false">
+    <div class="mycard shadow-lg position-relative" @mouseover="show = false" @mouseleave="show = false">
 
         <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
             <source src="/RickEMorty.mp4" type="video/mp4">
         </video>
 
-        <img :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class="" @error="loadImageFailed">
+        <img v-if="!show" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class=""
+            @error="loadImageFailed">
         <div class="card-body" ref='index'>
 
 
@@ -29,7 +30,8 @@
             <!-- <button @click="apri">dettagli</button> -->
             <!-- <div :class="{ 'd-none': !show }">sono dettagli</div> -->
             <div>{{ item.overview }}</div>
-            <!-- <div>{{ getCast(item.id) }}</div> -->
+            <div>Cast: {{ listaNomi.join() }}</div>
+            <div>Generi: {{ listaGeneri }}</div>
 
         </div>
     </div>
@@ -46,6 +48,8 @@ export default {
         return {
             store,
             show: false,
+            listaNomi: [],
+            listaGeneri: []
 
         }
     },
@@ -61,21 +65,47 @@ export default {
 
             return Math.ceil(vote) / 2;
         },
+        // showVideo() {
+        //     const time = setTimeout(() => { this.show = true }, 1000)
+        //     if (!this.show) {
+        //         this.clearTimeout(time);
+        //     } else {
+        //     }
+        // },
+        // clearTimeout() {
 
-        // getCast(movieId) {
-
-        //     const apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
-        //     axios.get(apiUrlCast).then((res) => {
-        //         store.cast = res.data.cast.filter((item, idx) => idx < 5);
-        //         return store.cast.name.join();
-
-
-        //     })
         // }
+
+        getCast(movieId) {
+            let attori = '';
+            let apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+
+            axios.get(apiUrlCast).then((res) => {
+                attori = res.data.cast.filter((item, idx) => idx < 5);
+                for (let item of attori) {
+                    this.listaNomi.push(' ' + item.name + ' ');
+                }
+                // console.log(this.listaNomi.join());
+                // return this.listaNomi;
+            })
+        },
+        getGenreIds(genre_ids) {
+            console.log(genre_ids)
+            const compareIds = genre_ids.filter((item) => {
+                console.log(store.genres)
+                store.genres.includes(item)
+                // console.log(store.genres.includes(item))
+                console.log(item)
+            })
+            console.log(compareIds)
+
+        }
 
     },
     mounted() {
         // console.log(this.$refs.index)
+        this.getCast(this.item.id)
+        this.getGenreIds(this.item.genre_ids)
     },
 }
 </script>
@@ -90,7 +120,6 @@ export default {
     // border-radius: 10px;
     transition: all 0.5s;
     cursor: pointer;
-
 
     h4 {
         // padding: 0.5rem 0;
@@ -116,10 +145,10 @@ export default {
     }
 
     &:hover img:not(.flag) {
-        // height: 175px;
-        // object-fit: contain;
+        height: 175px;
+        object-fit: contain;
         // object-position: center;
-        display: none;
+        // display: none;
         // width: 300px;
     }
 

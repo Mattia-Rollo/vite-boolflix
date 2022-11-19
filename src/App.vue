@@ -19,7 +19,6 @@ export default {
       titoloSeries: 'SeriesTV',
       titoloMovie: 'Movie',
       populartv: 'Popular TV',
-      listOne: [...store.ListMovie]
 
 
     }
@@ -30,6 +29,7 @@ export default {
       // console.log(store.categorySelected)
       // console.log(store.ListMovie[0].genre_ids)
       // console.log(store.ListMovie[0])
+
 
       return store.categorySelected
         ? store.ListMovie.filter((item) => {

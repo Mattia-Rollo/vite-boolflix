@@ -1,7 +1,7 @@
 <template>
   <HeaderComponent />
   <ListComponent :array="filteredMovie" :titolo="titoloMovie" />
-  <ListComponent :array="store.ListSeries" :titolo="titoloSeries" />
+  <ListComponent :array="filteredSeries" :titolo="titoloSeries" />
   <ListComponent :array="store.popularTV" :titolo="populartv" />
 
 </template>
@@ -27,15 +27,28 @@ export default {
   computed: {
     filteredMovie() {
 
-      console.log(store.categorySelected)
+      // console.log(store.categorySelected)
       // console.log(store.ListMovie[0].genre_ids)
       // console.log(store.ListMovie[0])
 
       return store.categorySelected
         ? store.ListMovie.filter((item) => {
-          item.genre_ids.includes(store.categorySelected);
+          return item.genre_ids.includes(store.categorySelected);
         })
         : store.ListMovie;
+
+    },
+    filteredSeries() {
+
+      // console.log(store.categorySelected)
+      // console.log(store.ListMovie[0].genre_ids)
+      // console.log(store.ListMovie[0])
+
+      return store.categorySelected
+        ? store.ListSeries.filter((item) => {
+          return item.genre_ids.includes(store.categorySelected);
+        })
+        : store.ListSeries;
 
     }
   },

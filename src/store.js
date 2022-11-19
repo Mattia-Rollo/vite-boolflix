@@ -21,8 +21,8 @@ export const store = reactive({
   ListSeries: [],
   params: {},
   getMovie() {
-    this.ListMovie = [];
-    this.ListSeries = [];
+    // this.ListMovie = [];
+    // this.ListSeries = [];
     this.popularTV = [];
     // this.loading = true;
     const params = { ...this.search };
@@ -84,7 +84,7 @@ export const store = reactive({
       });
   },
 
-  categorySelected: null,
+  categorySelected: 0,
   genres: [],
   getGenres() {
     axios
@@ -99,5 +99,6 @@ export const store = reactive({
        console.log(error);
       });
 
-  }
+  },
+  
 });

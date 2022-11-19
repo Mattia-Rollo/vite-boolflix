@@ -56,7 +56,8 @@ export default {
 
 
             return Math.ceil(vote) / 2;
-        }
+        },
+
     },
     mounted() {
         // console.log(this.$refs.index)

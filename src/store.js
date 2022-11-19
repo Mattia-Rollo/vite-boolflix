@@ -94,7 +94,7 @@ export const store = reactive({
       .get(this.apiURL + "genre/movie/list" + this.key_ath)
       .then((res) => {
         this.genres = res.data.genres;
-        console.log(this.genres);
+        // console.log(this.genres);
       })
       .catch((error) => {
         console.log(error);

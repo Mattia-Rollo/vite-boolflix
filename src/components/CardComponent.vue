@@ -31,7 +31,7 @@
             <!-- <div :class="{ 'd-none': !show }">sono dettagli</div> -->
             <div>{{ item.overview }}</div>
             <div>Cast: {{ listaNomi.join() }}</div>
-            <div>Generi: {{ listaGeneri }}</div>
+            <div v-if="listaGeneri.join()">Generi: {{ listaGeneri.join() }}</div>
 
         </div>
     </div>
@@ -90,14 +90,15 @@ export default {
             })
         },
         getGenreIds(genre_ids) {
-            console.log(genre_ids)
-            const compareIds = genre_ids.filter((item) => {
-                console.log(store.genres)
-                store.genres.includes(item)
-                // console.log(store.genres.includes(item))
-                console.log(item)
-            })
-            console.log(compareIds)
+            // console.log(genre_ids)
+            // console.log(store.genres);
+            for (let it of genre_ids) {
+                let x = store.genres.filter((item) => item.id == it)
+                for (let item of x) {
+                    this.listaGeneri.push(' ' + item.name + ' ');
+                }
+            }
+            // console.log(compareIds)
 
         }
 

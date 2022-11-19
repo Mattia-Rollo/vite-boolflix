@@ -29,12 +29,15 @@
             <!-- <button @click="apri">dettagli</button> -->
             <!-- <div :class="{ 'd-none': !show }">sono dettagli</div> -->
             <div>{{ item.overview }}</div>
+            <!-- <div>{{ getCast(item.id) }}</div> -->
+
         </div>
     </div>
 
 </template>
 
 <script>
+import axios from 'axios';
 import { store } from '../store';
 export default {
     name: 'CardComponent',
@@ -42,7 +45,8 @@ export default {
     data() {
         return {
             store,
-            show: false
+            show: false,
+
         }
     },
     methods: {
@@ -57,6 +61,17 @@ export default {
 
             return Math.ceil(vote) / 2;
         },
+
+        // getCast(movieId) {
+
+        //     const apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+        //     axios.get(apiUrlCast).then((res) => {
+        //         store.cast = res.data.cast.filter((item, idx) => idx < 5);
+        //         return store.cast.name.join();
+
+
+        //     })
+        // }
 
     },
     mounted() {

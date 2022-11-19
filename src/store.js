@@ -72,6 +72,7 @@ export const store = reactive({
   paramsPopular: {},
   popularTV: [],
   getPopular() {
+    this.loading = true;  
     axios
       .get(this.apiURL + "tv/popular" + this.key_ath, {
         params: {
@@ -80,7 +81,7 @@ export const store = reactive({
       })
       .then((res) => {
         this.popularTV = res.data.results;
-        this.loading = false;
+        setTimeout(() => {this.loading = false;},1000)
       });
   },
 
@@ -100,5 +101,5 @@ export const store = reactive({
       });
 
   },
-  
+  cast : []
 });

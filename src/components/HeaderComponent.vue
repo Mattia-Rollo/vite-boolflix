@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between flex-wrap">
         <div class="display-3 fw-semibold">Boolflix</div>
         <SearchComponent />
     </div>

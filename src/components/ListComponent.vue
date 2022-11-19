@@ -9,7 +9,7 @@
         <div class="container py-3" v-if="array.length">
             <!-- <div v-if="!store.ListMovie.length > 0">{{ store.errormessage }}</div> -->
             <h2 class="py-1" v-if="!store.loading">{{ titolo }}</h2>
-            <div v-if="!store.loading" class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-3 py-1">
+            <div v-if="!store.loading" class="row row-cols-1 row-cols-md-4 row-cols-lg-5 g-3 py-1">
                 <div v-for="(item, index) in array" class="col" :key="index">
                     <CardComponent :item="item" />
                 </div>

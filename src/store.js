@@ -72,7 +72,7 @@ export const store = reactive({
   paramsPopular: {},
   popularTV: [],
   getPopular() {
-    this.loading = true;  
+    this.loading = true;
     axios
       .get(this.apiURL + "tv/popular" + this.key_ath, {
         params: {
@@ -81,7 +81,9 @@ export const store = reactive({
       })
       .then((res) => {
         this.popularTV = res.data.results;
-        setTimeout(() => {this.loading = false;},1000)
+        setTimeout(() => {
+          this.loading = false;
+        }, 1000);
       });
   },
 
@@ -89,17 +91,14 @@ export const store = reactive({
   genres: [],
   getGenres() {
     axios
-      .get(
-        this.apiURL + 'genre/movie/list' + this.key_ath
-      )
+      .get(this.apiURL + "genre/movie/list" + this.key_ath)
       .then((res) => {
         this.genres = res.data.genres;
         // console.log(this.genres);
       })
       .catch((error) => {
-       console.log(error);
+        console.log(error);
       });
-
   },
-  cast : []
+  cast: [],
 });

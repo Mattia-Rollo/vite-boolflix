@@ -1,5 +1,5 @@
 <template>
-    <form class="d-flex align-content-center "
+    <form class="d-flex align-content-center flex-wrap"
         @submit.prevent="store.search.query ? store.getMovie() : store.getPopular()">
         <div class="col-auto">
             <select class="myform-select " v-model="store.categorySelected">

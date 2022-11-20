@@ -1,11 +1,14 @@
 <template>
 
-    <div class="mycard shadow-lg position-relative" @mouseover="show = false" @mouseleave="show = false">
+    <div class="mycard shadow-lg position-relative" @mouseover="show = true" @mouseleave="show = false"
+        @mouseover.once="getCast(item.id)">
 
-        <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
+        <!-- <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
             <source src="/RickEMorty.mp4" type="video/mp4">
-        </video>
+        </video> -->
 
+        <img v-if="show" :src="`https://image.tmdb.org/t/p/w342${item.backdrop_path}`" alt="" class=""
+            @error="loadImageFailed">
         <img v-if="!show" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class=""
             @error="loadImageFailed">
         <div class="card-body" ref='index'>
@@ -109,7 +112,7 @@ export default {
     },
     beforeMount() {
         // console.log(this.$refs.index)
-        this.getCast(this.item.id)
+        // this.getCast(this.item.id)
         this.getGenreIds(this.item.genre_ids)
     },
 }
@@ -152,7 +155,7 @@ export default {
 
     &:hover img:not(.flag) {
         height: 175px;
-        object-fit: contain;
+        object-fit: cover;
         // object-position: center;
         // display: none;
         // width: 300px;

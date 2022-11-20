@@ -1,9 +1,9 @@
 <template>
     <div class="d-flex flex-wrap">
         <div class="display-3 fw-semibold">Boolflix</div>
-        <div class="me-auto">
-            <select class="myform-select " v-model="store.categorySelected">
-                <option disabled value=''>Open this select menu</option>
+        <div class="ms-auto">
+            <select class="myform-select" v-model="store.categorySelected">
+                <option disabled value=''>Select Category</option>
                 <option v-for="item in store.genres" :value="item.id">{{ item.name }}</option>
 
             </select>
@@ -45,5 +45,31 @@ div.d-flex {
     }
 
     backdrop-filter: blur(5px);
+}
+
+.myform-select {
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 0 1rem;
+}
+
+option {
+    background-color: black;
+    color: white;
+}
+
+.myform-select:after {
+
+    position: absolute;
+    content: "a";
+    top: 14px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+
 }
 </style>

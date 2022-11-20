@@ -15,7 +15,7 @@
         <img v-if="!show"
             :src="item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'https://via.placeholder.com/400.png?text=Image+400x400'"
             alt="" class="" @error="loadImageFailed">
-        <div class="card-body" ref='index'>
+        <div class="card-body">
 
 
             <h5>{{ item.title ? item.title : item.name }}</h5>

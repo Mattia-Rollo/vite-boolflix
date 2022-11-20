@@ -5,7 +5,7 @@
         <div class=" col-auto">
             <Transition>
                 <input @blur="show = !show" v-if="show" type="text" class="h-100" id="Search" placeholder="Search"
-                    v-model.trim="store.search.query">
+                    v-model.trim="store.search.query" ref="focusMe">
             </Transition>
         </div>
 
@@ -41,11 +41,21 @@ export default {
                 store.getPopular();
             } else {
                 // store.series = false;
+                store.ListMovie = [];
+                store.ListSeries = [];
                 store.getMovie();
             }
         }
     },
     methods: {
+        // focus() {
+        //     if (this.$refs.focusMe) {
+        //         return this.$nextTick(() => this.$refs.focusMe.focus())
+        //     } else {
+        //         return
+        //     }
+
+
         // searchMovie() {
         //     // store.params = { ...this.search };
         //     //facciamo una copia di this.earch per non cancellarne le proprietà
@@ -74,8 +84,17 @@ export default {
         // }
     },
     mounted() {
-        // this.$nextTick(() => this.$refs.focusMe.focus())
-    }
+        // console.log(this.$refs.focusMe)
+        // this.$nextTick(() => {
+        //     if (!this.$refs.focusMe) {
+        //         return this.$refs.focusMe.focus();
+        //     }
+        // }
+        // )
+        this.$nextTick(() => this.show ? console.log(this.$refs.focusMe) : console.log('ciao'))
+    },
+    updated() {
+    },
 
 }
 </script>

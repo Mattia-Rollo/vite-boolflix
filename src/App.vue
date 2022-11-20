@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     filteredMovie() {
-
+      store.series = false;
       // console.log(store.categorySelected)
       // console.log(store.ListMovie[0].genre_ids)
       // console.log(store.ListMovie[0])
@@ -43,7 +43,7 @@ export default {
       // console.log(store.categorySelected)
       // console.log(store.ListMovie[0].genre_ids)
       // console.log(store.ListMovie[0])
-
+      store.series = true;
       return store.categorySelected
         ? store.ListSeries.filter((item) => {
           return item.genre_ids.includes(store.categorySelected);

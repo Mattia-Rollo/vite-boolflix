@@ -37,10 +37,12 @@ export default {
         'store.search.query'(newVal, OldVal) {
             // console.log(newVal, OldVal);
             if (newVal == '') {
+                // store.series = true;
                 store.getPopular();
                 store.ListMovie = [];
                 store.ListSeries = [];
             } else {
+                // store.series = false;
                 store.getMovie();
             }
         }

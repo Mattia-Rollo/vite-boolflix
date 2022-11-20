@@ -23,6 +23,7 @@ export const store = reactive({
   getMovie() {
     // this.ListMovie = [];
     // this.ListSeries = [];
+    
     this.popularTV = [];
     // this.loading = true;
     const params = { ...this.search };
@@ -36,6 +37,7 @@ export const store = reactive({
         setTimeout(() => {
           this.loading = false;
         }, 1500);
+        // this.series = true;
         // console.log(this.params);
       })
       .catch((error) => {
@@ -101,5 +103,5 @@ export const store = reactive({
       });
   },
   cast: [],
-  movieCastSelect: false,
+  series: true,
 });

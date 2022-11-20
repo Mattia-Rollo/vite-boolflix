@@ -78,8 +78,12 @@ export default {
 
         getCast(movieId) {
             let attori = '';
-            let apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
-
+            let apiUrlCast = '';
+            if (store.series) {
+                apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+            } else {
+                apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+            }
             axios.get(apiUrlCast).then((res) => {
                 attori = res.data.cast.filter((item, idx) => idx < 5);
                 for (let item of attori) {
@@ -103,7 +107,7 @@ export default {
         }
 
     },
-    mounted() {
+    beforeMount() {
         // console.log(this.$refs.index)
         this.getCast(this.item.id)
         this.getGenreIds(this.item.genre_ids)
@@ -120,6 +124,7 @@ export default {
     overflow: hidden;
     // border-radius: 10px;
     transition: all 0.5s;
+    // transition-delay: 1s;
     cursor: pointer;
 
     h4 {
@@ -142,7 +147,7 @@ export default {
 
         // width: 300px;
         // height: 600px;
-        z-index: 100;
+        z-index: 1000;
     }
 
     &:hover img:not(.flag) {
@@ -151,6 +156,7 @@ export default {
         // object-position: center;
         // display: none;
         // width: 300px;
+        z-index: 1000;
     }
 
     &:hover .card-body {
@@ -158,6 +164,7 @@ export default {
         // width: 300px;
 
         opacity: 1;
+        z-index: 1000;
     }
 
 
@@ -171,13 +178,14 @@ img {
     object-fit: cover;
     object-position: top;
     transition: all 0.5s;
+    // transition-delay: 1s;
 }
 
 .card-body {
     position: absolute;
     // display: none;
     bottom: 0;
-    font-size: 0.8rem;
+    // font-size: 0.8rem;
     overflow-y: auto;
     padding: 0.8rem;
     // justify-content: center;
@@ -191,6 +199,7 @@ img {
     // top: 175px;
     opacity: 0;
     transition: opacity 0.5s;
+    // transition-delay: 1s;
 
     &:hover {
         opacity: 1;

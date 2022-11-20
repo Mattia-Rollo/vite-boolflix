@@ -6,9 +6,12 @@
         <!-- <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
             <source src="/RickEMorty.mp4" type="video/mp4">
         </video> -->
+        <Transition>
 
-        <img v-if="show" :src="`https://image.tmdb.org/t/p/w342${item.backdrop_path}`" alt="" class=""
-            @error="loadImageFailed">
+            <img v-if="show" :src="`https://image.tmdb.org/t/p/w342${item.backdrop_path}`" alt="" class=""
+                @error="loadImageFailed">
+
+        </Transition>
         <img v-if="!show" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class=""
             @error="loadImageFailed">
         <div class="card-body" ref='index'>
@@ -245,6 +248,16 @@ img {
     // object-fit: fill;
     height: 35px;
     margin: .6rem 0;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.5s ease-out;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
 }
 
 // .slide-fade-enter-active {

@@ -1,19 +1,17 @@
 <template>
     <form class="d-flex align-content-center flex-wrap"
         @submit.prevent="store.search.query ? store.getMovie() : store.getPopular()">
-        <div class="col-auto">
-            <select class="myform-select " v-model="store.categorySelected">
-                <option selected value=''>Open this select menu</option>
-                <option v-for="item in store.genres" :value="item.id">{{ item.name }}</option>
 
-            </select>
-        </div>
         <div class="col-auto">
-            <input type="text" class="h-100" id="Search" placeholder="Search" v-model.trim="store.search.query">
+            <Transition>
+                <input v-if="show" type="text" class="h-100" id="Search" placeholder="Search"
+                    v-model.trim="store.search.query">
+            </Transition>
         </div>
 
         <div class="col-auto">
-            <button type="submit" class="btn btn-danger"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button @click="show = !show" type="submit" class="btn"><i
+                    class="fa-solid fa-magnifying-glass text-light"></i></button>
         </div>
     </form>
 </template>
@@ -25,7 +23,7 @@ export default {
     name: 'SearchComponent',
     data() {
         return {
-
+            show: false,
             store,
             // search: {
             //     query: 'a',
@@ -87,5 +85,17 @@ form {
 .myform-select {
     height: 100%;
     padding: 0 0.5rem;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: width 0.5s ease;
+    width: 200px;
+}
+
+.v-enter-from,
+.v-leave-to {
+    // opacity: 0;
+    width: 0;
 }
 </style>

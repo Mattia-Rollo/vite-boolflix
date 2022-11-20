@@ -8,12 +8,13 @@
         </video> -->
         <Transition>
 
-            <img v-if="show" :src="`https://image.tmdb.org/t/p/w342${item.backdrop_path}`" alt="" class=""
+            <img v-if="show" :src="`https://image.tmdb.org/t/p/w780${item.backdrop_path}`" alt="" class=""
                 @error="loadImageFailed">
 
         </Transition>
-        <img v-if="!show" :src="`https://image.tmdb.org/t/p/w342${item.poster_path}`" alt="" class=""
-            @error="loadImageFailed">
+        <img v-if="!show"
+            :src="item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'https://via.placeholder.com/400.png?text=Image+400x400'"
+            alt="" class="" @error="loadImageFailed">
         <div class="card-body" ref='index'>
 
 
@@ -85,7 +86,7 @@ export default {
         getCast(movieId) {
             let attori = '';
             let apiUrlCast = '';
-            if (store.series) {
+            if (!this.item.title) {
                 apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
             } else {
                 apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
@@ -163,6 +164,7 @@ export default {
         // display: none;
         // width: 300px;
         z-index: 1000;
+
     }
 
     &:hover .card-body {
@@ -191,7 +193,7 @@ img {
     position: absolute;
     // display: none;
     bottom: 0;
-    // font-size: 0.8rem;
+    font-size: 0.8rem;
     overflow-y: auto;
     padding: 0.8rem;
     // justify-content: center;

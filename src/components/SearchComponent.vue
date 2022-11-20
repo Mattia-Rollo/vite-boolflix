@@ -2,9 +2,9 @@
     <form class="d-flex align-content-center flex-wrap"
         @submit.prevent="store.search.query ? store.getMovie() : store.getPopular()">
 
-        <div class="col-auto">
+        <div class=" col-auto">
             <Transition>
-                <input v-if="show" type="text" class="h-100" id="Search" placeholder="Search"
+                <input @blur="show = !show" v-if="show" type="text" class="h-100" id="Search" placeholder="Search"
                     v-model.trim="store.search.query">
             </Transition>
         </div>
@@ -36,9 +36,9 @@ export default {
             // console.log(newVal, OldVal);
             if (newVal == '') {
                 // store.series = true;
-                store.getPopular();
                 store.ListMovie = [];
                 store.ListSeries = [];
+                store.getPopular();
             } else {
                 // store.series = false;
                 store.getMovie();
@@ -72,6 +72,9 @@ export default {
         //     // store.search.name = '';
         //     //this.$emit('filterchar')
         // }
+    },
+    mounted() {
+        // this.$nextTick(() => this.$refs.focusMe.focus())
     }
 
 }
@@ -89,7 +92,7 @@ form {
 
 .v-enter-active,
 .v-leave-active {
-    transition: width 0.5s ease;
+    transition: width 0.3s ease;
     width: 200px;
 }
 

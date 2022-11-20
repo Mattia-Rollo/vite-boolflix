@@ -23,7 +23,7 @@ export const store = reactive({
   getMovie() {
     // this.ListMovie = [];
     // this.ListSeries = [];
-    
+
     this.popularTV = [];
     // this.loading = true;
     const params = { ...this.search };
@@ -89,7 +89,7 @@ export const store = reactive({
       });
   },
 
-  categorySelected: 0,
+  categorySelected: "",
   genres: [],
   getGenres() {
     axios

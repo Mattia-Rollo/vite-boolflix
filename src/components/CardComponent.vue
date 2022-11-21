@@ -8,12 +8,12 @@
         </video> -->
         <iframe v-if="show" width="280" height="175" :src="video" title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe>
-        <!-- <Transition>
+        <Transition>
 
             <img v-if="show" :src="`https://image.tmdb.org/t/p/w780${item.backdrop_path}`" alt="" class=""
                 @error="loadImageFailed">
 
-        </Transition> -->
+        </Transition>
         <img v-if="!show"
             :src="item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'https://via.placeholder.com/400.png?text=Image+400x400'"
             alt="" class="" @error="loadImageFailed">
@@ -172,7 +172,8 @@ export default {
     &:hover img:not(.flag) {
         height: 175px;
         object-fit: cover;
-        // object-position: center;
+        position: absolute;
+        bottom: 0; // object-position: center;
         // display: none;
         // width: 300px;
         z-index: 1000;

@@ -3,7 +3,7 @@
         <div class="display-3 fw-semibold">Boolflix</div>
         <div class="ms-auto">
             <select class="myform-select" v-model="store.categorySelected">
-                <option disabled value=''>Select Category</option>
+                <option value=''>Select Category</option>
                 <option v-for="item in store.genres" :value="item.id">{{ item.name }}</option>
 
             </select>

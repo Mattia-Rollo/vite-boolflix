@@ -6,12 +6,14 @@
         <!-- <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
             <source src="/RickEMorty.mp4" type="video/mp4">
         </video> -->
-        <Transition>
+        <iframe v-if="show" width="280" height="175" :src="video" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe>
+        <!-- <Transition>
 
             <img v-if="show" :src="`https://image.tmdb.org/t/p/w780${item.backdrop_path}`" alt="" class=""
                 @error="loadImageFailed">
 
-        </Transition>
+        </Transition> -->
         <img v-if="!show"
             :src="item.poster_path ? `https://image.tmdb.org/t/p/w342${item.poster_path}` : 'https://via.placeholder.com/400.png?text=Image+400x400'"
             alt="" class="" @error="loadImageFailed">
@@ -56,7 +58,8 @@ export default {
             store,
             show: false,
             listaNomi: [],
-            listaGeneri: []
+            listaGeneri: [],
+            video: '',
 
         }
     },
@@ -85,17 +88,26 @@ export default {
 
         getCast(movieId) {
             let attori = '';
+            let video = ''
             let apiUrlCast = '';
+            let apiUrlVideo = '';
             if (!this.item.title) {
                 apiUrlCast = `https://api.themoviedb.org/3/tv/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+                apiUrlVideo = `https://api.themoviedb.org/3/tv/${movieId}/videos?api_key=8ace785dd1f96b68334521629f5dadaf`
             } else {
                 apiUrlCast = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=8ace785dd1f96b68334521629f5dadaf`;
+                apiUrlVideo = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=8ace785dd1f96b68334521629f5dadaf`;
             }
             axios.get(apiUrlCast).then((res) => {
                 attori = res.data.cast.filter((item, idx) => idx < 5);
                 for (let item of attori) {
                     this.listaNomi.push(' ' + item.name + ' ');
                 }
+            })
+            axios.get(apiUrlVideo).then((res) => {
+                video = res.data.results[0];
+                this.video = 'https://www.youtube.com/embed/' + video.key;
+                console.log(this.video);
                 // console.log(this.listaNomi.join());
                 // return this.listaNomi;
             })

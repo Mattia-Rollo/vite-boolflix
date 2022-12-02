@@ -58,7 +58,7 @@ export const store = reactive({
         this.errormessage = error.message;
       });
   },
-  flagApiUrl: "https://countryflagsapi.com/png/",
+  flagApiUrl: "https://www.countryflagicons.com/FLAT/64/",
   getCountryFlag(country) {
     country == "uk" ? (country = "gb") : "";
     country == "en" ? (country = "us") : "";
@@ -68,7 +68,7 @@ export const store = reactive({
     country == "hi" ? (country = "in") : "";
     country == "el" ? (country = "gr") : "";
 
-    const flagApi = this.flagApiUrl + country;
+    const flagApi = this.flagApiUrl + country.toUpperCase() + ".png";
     return flagApi;
   },
   paramsPopular: {},

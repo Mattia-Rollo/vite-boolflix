@@ -18,7 +18,7 @@ export default {
       store,
       titoloSeries: 'SeriesTV',
       titoloMovie: 'Movie',
-      populartv: 'Popular TV',
+      populartv: 'Trend Movies',
 
 
     }

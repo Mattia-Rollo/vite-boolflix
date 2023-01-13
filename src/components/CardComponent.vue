@@ -158,7 +158,7 @@ export default {
 
         transform: scale(130%);
         width: 280px;
-        height: 350px;
+        // height: 350px;
         border: 1px solid gray;
         border-radius: 10px;
         // margin: 40px 0;
@@ -220,6 +220,7 @@ img {
     // top: 175px;
     opacity: 0;
     transition: opacity 0.5s;
+    // transition-delay: 1s;
     // transition-delay: 1s;
 
     &:hover {

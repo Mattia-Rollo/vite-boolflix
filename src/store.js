@@ -8,7 +8,7 @@ export const store = reactive({
     query: "",
     language: "it-IT",
     include_adult: false,
-    page: 1,
+    page: 10,
   },
   apiURL: "https://api.themoviedb.org/3/",
   searchEndPoint: "search/",
@@ -76,7 +76,7 @@ export const store = reactive({
   getPopular() {
     this.loading = true;
     axios
-      .get(this.apiURL + "tv/popular" + this.key_ath, {
+      .get(this.apiURL + "/trending/movie/week" + this.key_ath, {
         params: {
           language: "it-IT",
         },

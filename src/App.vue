@@ -55,6 +55,7 @@ export default {
   created() {
     store.getPopular();
     store.getGenres();
+    store.getMovie();
 
     // store.getCharacters();
     //this.getCharacters()

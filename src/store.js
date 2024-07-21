@@ -6,14 +6,14 @@ export const store = reactive({
   loading: true,
   search: {
     query: "",
-    language: "it-IT",
+    // language: "it-IT",
     include_adult: false,
-    page: 10,
+    page: 1,
   },
   apiURL: "https://api.themoviedb.org/3/",
   searchEndPoint: "search/",
   endPointMovie: "movie",
-  endPointTv: "tv",
+  endPointTvSeries: "tv",
   popular: "popular/",
   key_ath: "?api_key=8ace785dd1f96b68334521629f5dadaf",
   errormessage: "",
@@ -27,18 +27,17 @@ export const store = reactive({
     this.popularTV = [];
     // this.loading = true;
     const params = { ...this.search };
-    axios
-      .get(
-        this.apiURL + this.searchEndPoint + this.endPointMovie + this.key_ath,
-        { params }
+    axios.get(this.apiURL + this.searchEndPoint + this.endPointMovie + this.key_ath,
+        {params},
+        
       )
       .then((res) => {
         this.ListMovie = res.data.results;
-        setTimeout(() => {
-          this.loading = false;
-        }, 1500);
+        // setTimeout(() => {
+        this.loading = false;
+        // }, 1500);
         // this.series = true;
-        // console.log(this.params);
+        console.log(res);
       })
       .catch((error) => {
         this.ListMovie.length = 0;
@@ -46,9 +45,9 @@ export const store = reactive({
       });
 
     axios
-      .get(this.apiURL + this.searchEndPoint + this.endPointTv + this.key_ath, {
-        params,
-      })
+      .get(this.apiURL + this.searchEndPoint + this.endPointTvSeries + this.key_ath, 
+        { params }
+      )
       .then((res) => {
         this.ListSeries = res.data.results;
       })
@@ -76,16 +75,17 @@ export const store = reactive({
   getPopular() {
     this.loading = true;
     axios
-      .get(this.apiURL + "/trending/movie/week" + this.key_ath, {
-        params: {
-          language: "it-IT",
-        },
-      })
+      .get(this.apiURL + "trending/movie/week" + this.key_ath
+        // params: {
+          // language: "it-IT",
+        // },
+      )
       .then((res) => {
         this.popularTV = res.data.results;
         setTimeout(() => {
           this.loading = false;
         }, 1000);
+        console.log(res);
       });
   },
 
@@ -97,11 +97,12 @@ export const store = reactive({
       .then((res) => {
         this.genres = res.data.genres;
         // console.log(this.genres);
+        console.log(res);
       })
       .catch((error) => {
         console.log(error);
       });
   },
   cast: [],
-  series: true,
+  // series: true,
 });

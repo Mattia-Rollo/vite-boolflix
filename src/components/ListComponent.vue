@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import { store } from '../store';
 import CardComponent from './CardComponent.vue';
 

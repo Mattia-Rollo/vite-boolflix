@@ -6,8 +6,8 @@
         <!-- <video v-if="show" muted autoplay loop id="myVideo" height="175" controls>
             <source src="/RickEMorty.mp4" type="video/mp4">
         </video> -->
-        <iframe v-if="show" width="280" height="175" :src="video" title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe>
+        <!-- <iframe v-if="show" width="280" height="175" :src="video" title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; " allowfullscreen></iframe> -->
         <Transition>
 
             <img v-if="show" :src="`https://image.tmdb.org/t/p/w780${item.backdrop_path}`" alt="" class=""
@@ -27,7 +27,7 @@
                         item.original_title :
                         item.original_name
                 }}</div>
-            <img class="flag" :src="store.getCountryFlag(item.original_language)" alt="">
+            <!-- <img class="flag" :src="store.getCountryFlag(item.original_language)" alt=""> -->
             <!-- <div class="text-center position-relative ">{{ item.original_language }}</div> -->
             <div v-if="item.release_date">Uscita: {{ item.release_date.split('-').reverse().join('-') }}</div>
 
@@ -172,8 +172,7 @@ export default {
     &:hover img:not(.flag) {
         height: 175px;
         object-fit: cover;
-        position: absolute;
-        bottom: 0; // object-position: center;
+        position: absolute; // object-position: center;
         // display: none;
         // width: 300px;
         z-index: 1000;

@@ -82,9 +82,9 @@ export const store = reactive({
       )
       .then((res) => {
         this.popularTV = res.data.results;
-        setTimeout(() => {
-          this.loading = false;
-        }, 1000);
+        // setTimeout(() => {
+        this.loading = false;
+        // }, 1000);
         console.log(res);
       });
   },
